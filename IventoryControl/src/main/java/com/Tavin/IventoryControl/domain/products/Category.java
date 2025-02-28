@@ -2,6 +2,7 @@ package com.Tavin.IventoryControl.domain.products;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,6 +13,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_category")
 @EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
 
     @Id
