@@ -42,4 +42,10 @@ public class InboundController {
         inboundService.deleteInbound(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<Page<Inbound>> getInbounds(@RequestParam(value = "productName", defaultValue = "", required = false) String productName,
+                                                     Pageable pageable) {
+        return new ResponseEntity<>(inboundService.getInbounds(pageable, productName), HttpStatus.OK);
+    }
 }

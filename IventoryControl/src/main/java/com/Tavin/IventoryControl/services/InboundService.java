@@ -63,4 +63,8 @@ public class InboundService {
 
        return inboundRepository.save(inbound);
     }
+
+    public Page<Inbound> getInbounds(Pageable pageable, String productName) {
+        return inboundRepository.findByProductName("%" + productName + "%", pageable);
+    }
 }
