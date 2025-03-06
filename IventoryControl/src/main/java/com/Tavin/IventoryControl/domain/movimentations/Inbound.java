@@ -26,9 +26,7 @@ public class Inbound {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String name;
-
-    private String description;
+    private TypesMovimentations typesMovimentations;
 
     private int quantity;
 

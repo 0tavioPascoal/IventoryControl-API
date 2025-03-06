@@ -1,7 +1,6 @@
 package com.Tavin.IventoryControl.infra.dtos.inbound;
 
-public record InboundPostRequestDto(String name,
-                                    String desc,
+public record InboundPostRequestDto(
                                     Integer quantity,
                                     String idProduct,
                                     String idUser) {
