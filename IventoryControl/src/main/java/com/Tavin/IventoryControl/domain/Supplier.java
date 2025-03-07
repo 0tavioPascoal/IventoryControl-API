@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -32,8 +33,8 @@ public class Supplier {
     private String cnpj;
 
     @CreatedDate
-    private Date created;
+    private LocalDate created;
 
     @LastModifiedDate
-    private Date updated;
+    private LocalDate updated;
 }

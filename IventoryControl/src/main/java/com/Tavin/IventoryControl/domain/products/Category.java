@@ -3,10 +3,12 @@ package com.Tavin.IventoryControl.domain.products;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -27,8 +29,8 @@ public class Category {
     private String name;
 
     @CreatedDate
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDate updatedAt;
 }

@@ -1,11 +1,17 @@
 package com.Tavin.IventoryControl.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -23,16 +29,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @NotNull(message = "Required field!")
     private String username;
 
+    @NotNull(message = "Required field!")
+    @Size(min = 5, max = 20)
     private String password;
 
+    @Email
     private String email;
 
     @CreatedDate
-    private Date createdAt;
+    private LocalDate createdAt;
 
     @LastModifiedDate
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
 }
