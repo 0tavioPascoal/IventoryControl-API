@@ -14,6 +14,8 @@ import java.util.UUID;
 public interface InboundRepository extends JpaRepository<Inbound, UUID> {
 
 
-    @Query("select i from Inbound i where upper(i.product.name) like upper(:productName) ")
-    Page<Inbound> findByProductName(@Param("productName") String productName, Pageable pageable);
+    @Query("select i from Inbound i where upper(i.product.name) like upper(:productName) and upper(i.user.username) like upper(:userName)")
+    Page<Inbound> findByProductName(@Param("productName") String productName,
+                                    @Param("userName") String userName,
+                                    Pageable pageable);
 }

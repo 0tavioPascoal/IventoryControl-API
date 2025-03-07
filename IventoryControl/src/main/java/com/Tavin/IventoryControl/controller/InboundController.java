@@ -45,7 +45,8 @@ public class InboundController {
 
     @GetMapping("/list")
     public ResponseEntity<Page<Inbound>> getInbounds(@RequestParam(value = "productName", defaultValue = "", required = false) String productName,
+                                                     @RequestParam(value = "userName", defaultValue = "", required = false) String userName,
                                                      Pageable pageable) {
-        return new ResponseEntity<>(inboundService.getInbounds(pageable, productName), HttpStatus.OK);
+        return new ResponseEntity<>(inboundService.getInbounds(pageable, productName, userName), HttpStatus.OK);
     }
 }

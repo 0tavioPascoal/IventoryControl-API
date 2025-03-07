@@ -29,6 +29,9 @@ public class Outbound {
 
     private String location;
 
+    @Enumerated(EnumType.STRING)
+    private TypesMovimentations typesMovimentations;
+
     @CreatedDate
     private Date createdAt;
 
