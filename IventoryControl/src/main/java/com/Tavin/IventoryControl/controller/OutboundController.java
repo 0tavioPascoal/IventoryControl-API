@@ -4,6 +4,7 @@ import com.Tavin.IventoryControl.domain.movimentations.Outbound;
 import com.Tavin.IventoryControl.infra.dtos.outbound.OutboundPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.outbound.OutboundPutRequestDto;
 import com.Tavin.IventoryControl.services.OutboundService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public class OutboundController {
     private final OutboundService outboundService;
 
     @PostMapping()
-    public ResponseEntity<Outbound> createOutbound(@RequestBody OutboundPostRequestDto outboundPost) {
+    public ResponseEntity<Outbound> createOutbound(@RequestBody @Valid OutboundPostRequestDto outboundPost) {
         return new ResponseEntity<>(outboundService.createOutbound(outboundPost), HttpStatus.CREATED);
     }
 

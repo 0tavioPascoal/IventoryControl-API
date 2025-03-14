@@ -4,6 +4,7 @@ import com.Tavin.IventoryControl.domain.products.Product;
 import com.Tavin.IventoryControl.infra.dtos.Product.ProductPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.Product.ProductPutRequestDto;
 import com.Tavin.IventoryControl.services.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping()
-    public ResponseEntity<Product> createProduct(@RequestBody  ProductPostRequestDto productPostRequestDto) {
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductPostRequestDto productPostRequestDto) {
         return new ResponseEntity<>(productService.CreateProduct(productPostRequestDto), HttpStatus.CREATED);
     }
 

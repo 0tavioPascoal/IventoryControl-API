@@ -5,6 +5,8 @@ import com.Tavin.IventoryControl.domain.movimentations.TypesMovimentations;
 import com.Tavin.IventoryControl.domain.products.Product;
 import com.Tavin.IventoryControl.infra.dtos.inbound.InboundPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.inbound.InboundPutRequestDto;
+import com.Tavin.IventoryControl.infra.exceptions.BadRequestException;
+import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.mapper.InboundMapper;
 import com.Tavin.IventoryControl.infra.repositories.InboundRepository;
 import jakarta.transaction.Transactional;
@@ -34,7 +36,7 @@ public class InboundService {
 
     public Inbound getInboundById(String id) {
         UUID inboundId = UUID.fromString(id);
-        return  inboundRepository.findById(inboundId).orElseThrow(() -> new IllegalArgumentException("inbound not found"));
+        return  inboundRepository.findById(inboundId).orElseThrow(() -> new ResourceNotFoundException("inbound not found"));
     }
 
     public void deleteInbound(String id) {
@@ -51,11 +53,11 @@ public class InboundService {
        var product = inbound.getProduct();
 
        if(inbound.getTypesMovimentations() == requestDto.types()) {
-           throw new IllegalArgumentException("types cannot be updated");
+           throw new BadRequestException("types cannot be updated");
        }
 
        if (inbound.getTypesMovimentations() == TypesMovimentations.COMPLETED){
-           throw new IllegalArgumentException("types cannot be updated");
+           throw new BadRequestException("types cannot be updated");
        }
 
        inbound.setTypesMovimentations(requestDto.types());

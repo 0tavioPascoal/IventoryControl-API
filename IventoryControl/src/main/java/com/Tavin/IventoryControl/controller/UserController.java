@@ -4,6 +4,7 @@ import com.Tavin.IventoryControl.domain.User;
 import com.Tavin.IventoryControl.infra.dtos.user.UserPutRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.user.UserRequestDto;
 import com.Tavin.IventoryControl.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping()
-    public ResponseEntity<User> RegisterUser(@RequestBody UserRequestDto userRequestDto) {
+    public ResponseEntity<User> RegisterUser(@RequestBody @Valid UserRequestDto userRequestDto) {
        return new ResponseEntity<>(userService.register(userRequestDto), HttpStatus.CREATED);
     }
 

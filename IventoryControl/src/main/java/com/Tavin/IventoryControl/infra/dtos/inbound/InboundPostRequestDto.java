@@ -1,7 +1,13 @@
 package com.Tavin.IventoryControl.infra.dtos.inbound;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public record InboundPostRequestDto(
-                                    Integer quantity,
-                                    String idProduct,
-                                    String idUser) {
+        @NotNull(message = "Required quantity!")
+        Integer quantity,
+        @NotBlank(message = "Required Id for Product!")
+        String idProduct,
+        @NotBlank(message = "Requires Id for User!")
+        String idUser) {
 }

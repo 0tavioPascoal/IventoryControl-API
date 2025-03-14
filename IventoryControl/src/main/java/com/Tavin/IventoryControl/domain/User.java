@@ -29,14 +29,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotNull(message = "Required field!")
+
     private String username;
 
-    @NotNull(message = "Required field!")
-    @Size(min = 5, max = 20)
+
     private String password;
 
-    @Email
+
     private String email;
 
     @CreatedDate

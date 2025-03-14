@@ -3,6 +3,8 @@ package com.Tavin.IventoryControl.services;
 import com.Tavin.IventoryControl.domain.products.Category;
 import com.Tavin.IventoryControl.infra.dtos.category.CategoryPutRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.category.CategoryRequestDto;
+import com.Tavin.IventoryControl.infra.exceptions.BadRequestException;
+import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,7 +27,7 @@ public class CategoryService {
 
     public Category findByCategoryForId(String id){
         UUID uuid = UUID.fromString(id);
-        return categoryRepository.findById(uuid).orElseThrow(()-> new RuntimeException("Category not found"));
+        return categoryRepository.findById(uuid).orElseThrow(()->  new ResourceNotFoundException("Category not found"));
     }
 
     public Page<Category> findAllCategory(String name,Pageable pageable) {

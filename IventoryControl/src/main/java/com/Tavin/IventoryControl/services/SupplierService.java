@@ -3,6 +3,7 @@ package com.Tavin.IventoryControl.services;
 import com.Tavin.IventoryControl.domain.Supplier;
 import com.Tavin.IventoryControl.infra.dtos.supplier.SupplierPutRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.supplier.SupplierRequestDto;
+import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.repositories.SupplierRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ public class SupplierService {
 
     public Supplier GetSupplierById(String id){
         UUID uuid = UUID.fromString(id);
-        return supplierRepository.findById(uuid).orElseThrow(() -> new RuntimeException("Supplier not found"));
+        return supplierRepository.findById(uuid).orElseThrow(() -> new ResourceNotFoundException("Supplier not found"));
     }
 
     public Page<Supplier> GetSupplierByName(String name, Pageable pageable){

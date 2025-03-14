@@ -4,6 +4,7 @@ import com.Tavin.IventoryControl.domain.Supplier;
 import com.Tavin.IventoryControl.infra.dtos.supplier.SupplierPutRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.supplier.SupplierRequestDto;
 import com.Tavin.IventoryControl.services.SupplierService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public class SupplierController {
     private final SupplierService supplierService;
 
     @PostMapping()
-    public ResponseEntity<Supplier> CreateSupplier(@RequestBody SupplierRequestDto requestDto){
+    public ResponseEntity<Supplier> CreateSupplier(@RequestBody @Valid SupplierRequestDto requestDto){
         return new ResponseEntity<>(supplierService.CreateSupplier(requestDto) , HttpStatus.CREATED);
     }
 

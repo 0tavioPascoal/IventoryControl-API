@@ -3,6 +3,7 @@ package com.Tavin.IventoryControl.services;
 import com.Tavin.IventoryControl.domain.products.Product;
 import com.Tavin.IventoryControl.infra.dtos.Product.ProductPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.Product.ProductPutRequestDto;
+import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.mapper.ProductMapper;
 import com.Tavin.IventoryControl.infra.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class ProductService {
 
     public Product getProductById(String id) {
         UUID idProduct = UUID.fromString(id);
-        return productRepository.findById(idProduct).orElseThrow(() -> new RuntimeException("Product not found"));
+        return productRepository.findById(idProduct).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 
     public Page<Product> getAllProducts(String category,String name,Pageable pageable) {

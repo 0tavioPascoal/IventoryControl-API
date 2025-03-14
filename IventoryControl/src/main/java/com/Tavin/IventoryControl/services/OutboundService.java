@@ -6,6 +6,8 @@ import com.Tavin.IventoryControl.domain.movimentations.TypesMovimentations;
 import com.Tavin.IventoryControl.domain.products.Product;
 import com.Tavin.IventoryControl.infra.dtos.outbound.OutboundPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.outbound.OutboundPutRequestDto;
+import com.Tavin.IventoryControl.infra.exceptions.BadRequestException;
+import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.mapper.OutboundMapper;
 import com.Tavin.IventoryControl.infra.repositories.OutboundRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +33,7 @@ public class OutboundService {
 
     public Outbound findById(String id) {
         UUID idOutbound = UUID.fromString(id);
-        return outboundRepository.findById(idOutbound).orElseThrow(() -> new RuntimeException("Out bound not found"));
+        return outboundRepository.findById(idOutbound).orElseThrow(() -> new ResourceNotFoundException("Out bound not found"));
     }
 
     public Outbound updateOutbound(String id, OutboundPutRequestDto outboundPut) {
@@ -39,11 +41,11 @@ public class OutboundService {
        Product product = outbound.getProduct();
 
        if(outbound.getTypesMovimentations() == TypesMovimentations.COMPLETED){
-           throw  new RuntimeException("Outbound already exists");
+           throw  new BadRequestException("Outbound already exists");
        }
 
        if(outbound.getTypesMovimentations() == outboundPut.types()){
-           throw  new RuntimeException("Outbound already exists");
+           throw  new BadRequestException("Outbound already exists");
        }
 
        if(outboundPut.Location() != null){

@@ -5,6 +5,7 @@ import com.Tavin.IventoryControl.infra.dtos.inbound.InboundPostRequestDto;
 import com.Tavin.IventoryControl.infra.dtos.inbound.InboundPutRequestDto;
 import com.Tavin.IventoryControl.services.InboundService;
 import com.Tavin.IventoryControl.services.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +23,7 @@ public class InboundController {
     private final InboundService inboundService;
 
     @PostMapping()
-    public ResponseEntity<Inbound> createInbound(@RequestBody InboundPostRequestDto requestDto) {
+    public ResponseEntity<Inbound> createInbound(@RequestBody @Valid InboundPostRequestDto requestDto) {
         return  new ResponseEntity<>(inboundService.createInbound(requestDto), HttpStatus.CREATED);
     }
 
@@ -33,7 +34,7 @@ public class InboundController {
 
 
     @PutMapping()
-    public ResponseEntity<Inbound> updateInboundStatus(@RequestParam String id ,@RequestBody InboundPutRequestDto requestDto) {
+    public ResponseEntity<Inbound> updateInboundStatus(@RequestParam String id ,@RequestBody  InboundPutRequestDto requestDto) {
         return new ResponseEntity<>(inboundService.updatedStatusInbound(requestDto, id), HttpStatus.OK);
     }
 

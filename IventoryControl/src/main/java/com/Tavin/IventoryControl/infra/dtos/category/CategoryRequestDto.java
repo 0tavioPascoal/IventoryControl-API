@@ -1,4 +1,8 @@
 package com.Tavin.IventoryControl.infra.dtos.category;
 
-public record CategoryRequestDto(String name) {
+import jakarta.validation.constraints.NotBlank;
+
+public record CategoryRequestDto(
+        @NotBlank(message = "Required field!")
+        String name) {
 }
