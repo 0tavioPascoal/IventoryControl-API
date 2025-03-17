@@ -4,19 +4,14 @@ import com.Tavin.IventoryControl.infra.dtos.errors.FieldErrors;
 import com.Tavin.IventoryControl.infra.exceptions.ResourceNotFoundException;
 import com.Tavin.IventoryControl.infra.dtos.errors.ResponseError;
 import com.Tavin.IventoryControl.infra.exceptions.BadRequestException;
-import com.auth0.jwt.exceptions.JWTCreationException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import jakarta.servlet.ServletException;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.io.IOException;
+
 import java.util.List;
 
 @RestControllerAdvice
