@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query("select u from User u where upper(u.username) like upper(:username) ")
     Page<User> findByUsername(
     @Param("username") String username, Pageable pageable);
+
+    Optional<User> findByEmail(String email);
 }

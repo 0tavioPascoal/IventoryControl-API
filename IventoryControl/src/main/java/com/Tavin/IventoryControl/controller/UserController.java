@@ -19,11 +19,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping()
-    public ResponseEntity<User> RegisterUser(@RequestBody @Valid UserRequestDto userRequestDto) {
-       return new ResponseEntity<>(userService.register(userRequestDto), HttpStatus.CREATED);
-    }
-
     @PutMapping()
     public ResponseEntity<User> UpdateUser(@RequestParam String id,
                                            @RequestBody UserPutRequestDto userPutRequestDto) {

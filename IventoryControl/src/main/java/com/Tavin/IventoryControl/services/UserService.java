@@ -20,11 +20,6 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User register(UserRequestDto userRequestDto) {
-       var user = UserMapper.INSTANCE.toUser(userRequestDto);
-
-        return userRepository.save(user);
-    }
 
     public User UpdateUser(@RequestParam String id, UserPutRequestDto userPutRequestDto) {
 
