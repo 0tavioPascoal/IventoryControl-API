@@ -32,13 +32,11 @@ public class UserService {
 
 
     public User getUserById(String id) {
-        UUID uuid = UUID.fromString(id);
-        return userRepository.findById(uuid).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     public void deleteUser(@RequestParam String id) {
-        UUID uuid = UUID.fromString(id);
-        userRepository.deleteById(uuid);
+        userRepository.deleteById(id);
     }
 
     public Page<User> getAllUsers(String username, Pageable pageable) {

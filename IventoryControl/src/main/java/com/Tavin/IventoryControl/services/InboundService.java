@@ -35,8 +35,7 @@ public class InboundService {
     }
 
     public Inbound getInboundById(String id) {
-        UUID inboundId = UUID.fromString(id);
-        return  inboundRepository.findById(inboundId).orElseThrow(() -> new ResourceNotFoundException("inbound not found"));
+        return  inboundRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("inbound not found"));
     }
 
     public void deleteInbound(String id) {

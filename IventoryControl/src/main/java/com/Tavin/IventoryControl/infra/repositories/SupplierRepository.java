@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface SupplierRepository extends JpaRepository<Supplier, UUID> {
+public interface SupplierRepository extends JpaRepository<Supplier, String> {
 
     @Query("select s from Supplier s where upper(s.name) like upper(:name) ")
     Page<Supplier> findByName(

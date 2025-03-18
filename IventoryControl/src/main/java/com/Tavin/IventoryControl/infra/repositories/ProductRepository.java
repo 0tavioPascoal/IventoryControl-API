@@ -12,7 +12,7 @@ import java.util.UUID;
 
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, UUID> {
+public interface ProductRepository extends JpaRepository<Product, String> {
 
     @Query("select p from Product p where upper(p.name) like upper(:name) and upper (p.category.name) like upper(:category) ")
     Page<Product> findByCategoryAndName(@Param("category") String category, @Param("name") String name, Pageable pageable);

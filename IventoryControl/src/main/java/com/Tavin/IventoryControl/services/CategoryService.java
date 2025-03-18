@@ -26,8 +26,7 @@ public class CategoryService {
     }
 
     public Category findByCategoryForId(String id){
-        UUID uuid = UUID.fromString(id);
-        return categoryRepository.findById(uuid).orElseThrow(()->  new ResourceNotFoundException("Category not found"));
+        return categoryRepository.findById(id).orElseThrow(()->  new ResourceNotFoundException("Category not found"));
     }
 
     public Page<Category> findAllCategory(String name,Pageable pageable) {
@@ -35,8 +34,7 @@ public class CategoryService {
     }
 
     public void DeleteCategory(String id) {
-        UUID uuid = UUID.fromString(id);
-        categoryRepository.deleteById(uuid);
+        categoryRepository.deleteById(id);
     }
 
     public Category updateCategory(String id,CategoryPutRequestDto CategoryPutRequestDto) {

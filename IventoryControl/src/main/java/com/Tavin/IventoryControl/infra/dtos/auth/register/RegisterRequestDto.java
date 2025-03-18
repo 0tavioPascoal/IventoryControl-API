@@ -12,5 +12,6 @@ public record RegisterRequestDto(
         String password,
             @Email
                     @NotBlank(message = "Required field!")
+
         String email) {
 }

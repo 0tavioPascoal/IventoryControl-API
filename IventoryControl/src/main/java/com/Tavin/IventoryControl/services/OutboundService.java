@@ -33,7 +33,7 @@ public class OutboundService {
 
     public Outbound findById(String id) {
         UUID idOutbound = UUID.fromString(id);
-        return outboundRepository.findById(idOutbound).orElseThrow(() -> new ResourceNotFoundException("Out bound not found"));
+        return outboundRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Outbound not found"));
     }
 
     public Outbound updateOutbound(String id, OutboundPutRequestDto outboundPut) {

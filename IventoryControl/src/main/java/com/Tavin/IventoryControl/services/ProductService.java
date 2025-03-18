@@ -31,8 +31,7 @@ public class ProductService {
     }
 
     public Product getProductById(String id) {
-        UUID idProduct = UUID.fromString(id);
-        return productRepository.findById(idProduct).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 
     public Page<Product> getAllProducts(String category,String name,Pageable pageable) {

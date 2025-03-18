@@ -29,8 +29,7 @@ public class SupplierService {
     }
 
     public Supplier GetSupplierById(String id){
-        UUID uuid = UUID.fromString(id);
-        return supplierRepository.findById(uuid).orElseThrow(() -> new ResourceNotFoundException("Supplier not found"));
+        return supplierRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Supplier not found"));
     }
 
     public Page<Supplier> GetSupplierByName(String name, Pageable pageable){

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface InboundRepository extends JpaRepository<Inbound, UUID> {
+public interface InboundRepository extends JpaRepository<Inbound, String> {
 
 
     @Query("select i from Inbound i where upper(i.product.name) like upper(:productName) and upper(i.user.username) like upper(:userName)")
