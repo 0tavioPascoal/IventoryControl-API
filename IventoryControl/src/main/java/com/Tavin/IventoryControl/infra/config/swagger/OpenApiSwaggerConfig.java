@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
         type = SecuritySchemeType.HTTP,
         bearerFormat = "JWT",
         scheme = "bearer",
-        in = SecuritySchemeIn.HEADER
-)
+        in = SecuritySchemeIn.HEADER)
+
 public class OpenApiSwaggerConfig {
 }
