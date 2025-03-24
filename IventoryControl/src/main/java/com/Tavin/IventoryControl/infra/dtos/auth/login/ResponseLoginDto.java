@@ -1,4 +1,6 @@
 package com.Tavin.IventoryControl.infra.dtos.auth.login;
 
-public record ResponseLoginDto(String username, String token) {
+import com.Tavin.IventoryControl.domain.User;
+
+public record ResponseLoginDto(User user, String token) {
 }

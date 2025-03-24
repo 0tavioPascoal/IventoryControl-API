@@ -38,7 +38,7 @@ public class AuthorizationService implements UserDetailsService {
         User user = userRepository.findByEmail(data.email()).orElseThrow(() -> new UsernameNotFoundException("User not Found!"));
         if (passwordEncoder.matches(data.password(), user.getPassword())) {
             String token = tokenService.generateToken(user);
-            return new ResponseLoginDto(user.getUsername(), token);
+            return new ResponseLoginDto(user,token);
         }
         throw new BadRequestException("Wrong password!");
     }
