@@ -25,7 +25,10 @@ public class UserService {
 
         User user = getUserById(id);
         user.setUsername(userPutRequestDto.username());
-        user.setPassword(userPutRequestDto.password());
+
+        if (userPutRequestDto.password() != null && !userPutRequestDto.password().isEmpty()) {
+            user.setPassword(userPutRequestDto.password());
+        }
         user.setEmail(userPutRequestDto.email());
         return userRepository.save(user);
     }
